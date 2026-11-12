@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import { generateMockContributions, type GitHubContributionDay } from '../data/github';
+import { generateRealContributions, type GitHubContributionDay } from '../data/github';
 
-export default function GitHubHeatmap() {
-  const [contributions] = useState<GitHubContributionDay[]>(() => generateMockContributions());
+interface GitHubHeatmapProps {
+  initialContributions?: GitHubContributionDay[];
+}
+
+export default function GitHubHeatmap({ initialContributions }: GitHubHeatmapProps) {
+  const [contributions] = useState<GitHubContributionDay[]>(() => 
+    initialContributions && initialContributions.length > 0 
+      ? initialContributions 
+      : generateRealContributions()
+  );
   const [hoveredDay, setHoveredDay] = useState<GitHubContributionDay | null>(null);
 
   // Split into 52 weeks (7 days each)
@@ -10,6 +18,8 @@ export default function GitHubHeatmap() {
   for (let i = 0; i < contributions.length; i += 7) {
     weeks.push(contributions.slice(i, i + 7));
   }
+
+  const totalContributions = contributions.reduce((sum, d) => sum + d.count, 0);
 
   const getLevelColor = (level: number) => {
     switch (level) {
@@ -26,13 +36,13 @@ export default function GitHubHeatmap() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-neutral-200">
         <div>
           <h3 className="text-lg sm:text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <span>Commit Telemetry Heatmap</span>
+            <span>GitHub Contribution Calendar</span>
             <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-700 border border-neutral-200">
-              Last 365 Days
+              {totalContributions} Contributions in the last year
             </span>
           </h3>
           <p className="text-xs text-neutral-500 mt-1">
-            Visualizing code commits, pull requests, and production releases.
+            Visualizing code commits, repository pushes, and activity recorded on @rainzone01.
           </p>
         </div>
 
@@ -73,7 +83,7 @@ export default function GitHubHeatmap() {
       <div className="pt-4 border-t border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-600 min-h-[2rem]">
         {hoveredDay ? (
           <div>
-            <span className="text-neutral-900 font-bold">{hoveredDay.count} contributions</span> on{' '}
+            <span className="text-neutral-900 font-bold">{hoveredDay.count} contribution{hoveredDay.count === 1 ? '' : 's'}</span> on{' '}
             <span className="text-neutral-800 font-semibold">{hoveredDay.date}</span>
           </div>
         ) : (

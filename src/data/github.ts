@@ -33,169 +33,156 @@ export interface GitHubLanguage {
   bytes: number;
 }
 
-// Generate realistic 52-week contribution data (52 * 7 = 364 days)
-export function generateMockContributions(): GitHubContributionDay[] {
+// Generate real 52-week contribution data matching rainzone01's GitHub history
+export function generateRealContributions(): GitHubContributionDay[] {
   const days: GitHubContributionDay[] = [];
   const today = new Date();
   
+  // Real recorded active contribution dates from GitHub profile @rainzone01
+  const realActiveDays: Record<string, { count: number; level: 0 | 1 | 2 | 3 | 4 }> = {
+    '2026-11-12': { count: 4, level: 4 },
+    '2025-02-23': { count: 1, level: 2 },
+    '2024-12-20': { count: 3, level: 3 },
+    '2024-09-13': { count: 1, level: 2 },
+  };
+
   for (let i = 364; i >= 0; i--) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
     const dateStr = d.toISOString().split('T')[0];
-    const dayOfWeek = d.getDay(); // 0 is Sunday, 6 is Saturday
-
-    // Higher activity on weekdays
-    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-    const rand = Math.random();
-    let count = 0;
-    let level: 0 | 1 | 2 | 3 | 4 = 0;
-
-    if (isWeekend) {
-      if (rand > 0.6) {
-        count = Math.floor(Math.random() * 4) + 1;
-        level = count > 2 ? 2 : 1;
-      }
-    } else {
-      if (rand > 0.15) {
-        count = Math.floor(Math.random() * 9) + 1;
-        if (count >= 7) level = 4;
-        else if (count >= 5) level = 3;
-        else if (count >= 3) level = 2;
-        else level = 1;
-      }
-    }
+    const match = realActiveDays[dateStr];
 
     days.push({
       date: dateStr,
-      count,
-      level,
+      count: match ? match.count : 0,
+      level: match ? match.level : 0,
     });
   }
 
   return days;
 }
 
+// Real GitHub profile data for @rainzone01
 export const githubProfile = {
-  username: "rnznportfolio",
+  username: "rainzone01",
   displayName: "Lorenzon Emmanuel S. Ahorro",
-  bio: "Full Stack Web Developer & BSIT Graduate • Building web systems with PHP, Node, React & PostgreSQL",
-  publicRepos: 42,
-  followers: 320,
-  following: 114,
-  totalContributionsLastYear: 1482,
-  avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+  bio: "Full Stack Web Developer & Computer Programmer at the Municipality of Bobon. BSIT Graduate from the University of Eastern Philippines.",
+  location: "Northern Samar, Philippines",
+  publicRepos: 5,
+  followers: 0,
+  following: 0,
+  totalContributionsLastYear: 9,
+  avatarUrl: "https://avatars.githubusercontent.com/u/181438433?v=4",
+  profileUrl: "https://github.com/rainzone01",
+  memberSince: "September 2024",
 };
 
+// Real languages calculated from byte counts across rainzone01's repositories
 export const githubTopLanguages: GitHubLanguage[] = [
-  { name: 'PHP', percentage: 34.2, color: '#777bb4', bytes: 640000 },
-  { name: 'TypeScript', percentage: 28.5, color: '#3178c6', bytes: 533000 },
-  { name: 'JavaScript', percentage: 18.1, color: '#f7df1e', bytes: 338000 },
-  { name: 'SQL', percentage: 11.4, color: '#e38c00', bytes: 213000 },
-  { name: 'HTML & CSS', percentage: 7.8, color: '#e34f26', bytes: 145000 },
+  { name: 'TypeScript', percentage: 51.1, color: '#3178c6', bytes: 382535 },
+  { name: 'Astro', percentage: 15.4, color: '#ff5a03', bytes: 115429 },
+  { name: 'PHP', percentage: 15.3, color: '#777bb4', bytes: 114713 },
+  { name: 'Blade', percentage: 13.1, color: '#f05340', bytes: 98206 },
+  { name: 'CSS', percentage: 4.5, color: '#563d7c', bytes: 33307 },
+  { name: 'JavaScript', percentage: 1.3, color: '#f7df1e', bytes: 9813 },
 ];
 
+// Real public repositories on @rainzone01
 export const githubPinnedRepos: GitHubRepo[] = [
   {
-    name: 'bobon-katarungang-pambarangay-system',
-    description: 'Barangay justice, dispute mediation, and incident docketing platform for the Municipality of Bobon.',
-    url: 'https://github.com/rainzone01/bobon-katarungang-pambarangay-system',
-    stars: 84,
-    forks: 18,
+    name: 'rnznportfolio',
+    description: 'Production developer portfolio website built with Astro, TypeScript, Tailwind CSS, React Three Fiber, GSAP & Lenis.',
+    url: 'https://github.com/rainzone01/rnznportfolio',
+    stars: 0,
+    forks: 0,
+    language: 'Astro',
+    languageColor: '#ff5a03',
+    isPrivate: false,
+    updatedAt: 'Today',
+    topics: ['astro', 'typescript', 'tailwind', 'threejs', 'portfolio', 'react'],
+  },
+  {
+    name: 'BHMS',
+    description: 'Boarding House Management System: Room occupancy tracking, tenant leases, and utility billing platform.',
+    url: 'https://github.com/rainzone01/BHMS',
+    stars: 0,
+    forks: 0,
     language: 'PHP',
     languageColor: '#777bb4',
     isPrivate: false,
-    updatedAt: '2 days ago',
-    topics: ['php', 'mysql', 'barangay-justice', 'legal-tech', 'tailwind'],
+    updatedAt: 'Today',
+    topics: ['php', 'mysql', 'property-management', 'boarding-house', 'billing'],
   },
   {
-    name: 'bobon-rhu-inventory-system',
-    description: 'Medicine stock, pharmaceutical supplies, and patient prescription disbursement ledger for Bobon RHU.',
-    url: 'https://github.com/rainzone01/bobon-rhu-inventory-system',
-    stars: 96,
-    forks: 21,
-    language: 'PHP',
-    languageColor: '#777bb4',
-    isPrivate: false,
-    updatedAt: 'Yesterday',
-    topics: ['php', 'mysql', 'healthcare', 'inventory-system', 'fifo'],
-  },
-  {
-    name: 'gsm-vcci-queuing-system',
-    description: 'High-throughput ticketing, counter routing, and real-time public queuing display for GSM-VCCI.',
-    url: 'https://github.com/rainzone01/gsm-vcci-queuing-system',
-    stars: 112,
-    forks: 24,
+    name: 'GSM-VCCI-Distribution-System',
+    description: 'Queuing, ticket routing, and waiting room display distribution system for GSM-VCCI.',
+    url: 'https://github.com/rainzone01/GSM-VCCI-Distribution-System',
+    stars: 0,
+    forks: 0,
     language: 'JavaScript',
     languageColor: '#f7df1e',
     isPrivate: false,
-    updatedAt: '3 days ago',
-    topics: ['nodejs', 'express', 'queuing-system', 'realtime', 'display'],
+    updatedAt: 'Today',
+    topics: ['javascript', 'express', 'queuing-system', 'realtime', 'display'],
   },
   {
-    name: 'boarding-house-management-system',
-    description: 'Room occupancy tracking, tenant leases, and utility billing platform for rental properties.',
-    url: 'https://github.com/rainzone01/boarding-house-management-system',
-    stars: 78,
-    forks: 15,
+    name: 'UEPvetsystem',
+    description: 'University of Eastern Philippines Veterinary Clinic Information & Animal Patient Record System.',
+    url: 'https://github.com/rainzone01/UEPvetsystem',
+    stars: 0,
+    forks: 0,
     language: 'PHP',
     languageColor: '#777bb4',
     isPrivate: false,
-    updatedAt: '1 week ago',
-    topics: ['php', 'mysql', 'property-management', 'billing', 'tailwind'],
+    updatedAt: 'Dec 2024',
+    topics: ['php', 'blade', 'mysql', 'university', 'veterinary'],
   },
   {
-    name: 'uep-facility-booking-system',
-    description: 'Campus venue reservations, schedule conflict prevention, and approval workflow for UEP.',
-    url: 'https://github.com/rainzone01/uep-facility-booking-system',
-    stars: 142,
-    forks: 32,
+    name: 'horizon-ui-chakra-nextjs',
+    description: 'Horizon UI NextJS: Trendiest and innovative open source admin dashboard template built with Chakra UI & React.',
+    url: 'https://github.com/rainzone01/horizon-ui-chakra-nextjs',
+    stars: 0,
+    forks: 0,
     language: 'TypeScript',
     languageColor: '#3178c6',
     isPrivate: false,
-    updatedAt: '4 days ago',
-    topics: ['react', 'nextjs', 'booking-system', 'campus-tech', 'php'],
+    updatedAt: 'Feb 2025',
+    topics: ['typescript', 'nextjs', 'react', 'chakra-ui', 'dashboard'],
   },
 ];
 
+// Real commits from @rainzone01's repositories
 export const githubRecentCommits: GitHubCommit[] = [
   {
-    id: 'c8f1a29',
-    message: 'feat(docket): add automated Lupon summons letter generation with printable template',
-    repo: 'bobon-katarungang-pambarangay-system',
+    id: 'f2c7f72',
+    message: 'feat: complete developer portfolio for Lorenzon Emmanuel S. Ahorro',
+    repo: 'rnznportfolio',
     branch: 'main',
-    date: '3 hours ago',
-    url: 'https://github.com/rainzone01/bobon-katarungang-pambarangay-system/commit/c8f1a29',
+    date: 'Today',
+    url: 'https://github.com/rainzone01/rnznportfolio/commit/f2c7f72',
   },
   {
-    id: 'b492d11',
-    message: 'feat(rhu): implement FIFO batch expiry alerts for vaccine and medicine allocations',
-    repo: 'bobon-rhu-inventory-system',
-    branch: 'feat/batch-expiry',
-    date: 'Yesterday',
-    url: 'https://github.com/rainzone01/bobon-rhu-inventory-system/commit/b492d11',
-  },
-  {
-    id: 'f93c72b',
-    message: 'perf(queue): optimize counter call dispatch latency to lobby TV displays',
-    repo: 'gsm-vcci-queuing-system',
+    id: '12ec4d9',
+    message: 'Hello perd',
+    repo: 'horizon-ui-chakra-nextjs',
     branch: 'main',
-    date: '2 days ago',
-    url: 'https://github.com/rainzone01/gsm-vcci-queuing-system/commit/f93c72b',
+    date: 'Feb 23, 2025',
+    url: 'https://github.com/rainzone01/horizon-ui-chakra-nextjs/commit/12ec4d9',
   },
   {
-    id: 'e10884a',
-    message: 'fix(schedule): refine overlap conflict boundary check in auditorium reservation engine',
-    repo: 'uep-facility-booking-system',
-    branch: 'fix/collision-check',
-    date: '3 days ago',
-    url: 'https://github.com/rainzone01/uep-facility-booking-system/commit/e10884a',
+    id: '1b2caaa',
+    message: 'Add files via upload',
+    repo: 'UEPvetsystem',
+    branch: 'master',
+    date: 'Dec 20, 2024',
+    url: 'https://github.com/rainzone01/UEPvetsystem/commit/1b2caaa',
   },
   {
-    id: '8a3014e',
-    message: 'feat(billing): add water and electric sub-meter proportional utility split calculator',
-    repo: 'boarding-house-management-system',
-    branch: 'main',
-    date: '5 days ago',
-    url: 'https://github.com/rainzone01/boarding-house-management-system/commit/8a3014e',
+    id: 'a90f963',
+    message: 'Your commit message',
+    repo: 'UEPvetsystem',
+    branch: 'master',
+    date: 'Dec 20, 2024',
+    url: 'https://github.com/rainzone01/UEPvetsystem/commit/a90f963',
   },
 ];
