@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectGrid from '../../components/ProjectGrid';
+import { getCollection } from 'astro:content';
+
+const rawProjects = await getCollection('projects');
+const sortedProjects = rawProjects.sort((a, b) => a.data.order - b.data.order);
+
+const projectItems = sortedProjects.map((p) => ({
+  id: p.id,
+  slug: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  category: p.data.category,
+  tags: p.data.tags,
+  featured: p.data.featured,
+  liveUrl: p.data.liveUrl,
+  githubUrl: p.data.githubUrl,
+  stats: p.data.stats,
+}));
+---
+
+<BaseLayout
+  title="Projects & Engineering Systems | Full-Stack Portfolio"
+  description="Explore production systems, high-concurrency APIs, and full-stack web applications built with PHP, Next.js, React, Node.js, and PostgreSQL."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+    
+    <!-- Header -->
+    <div class="space-y-3 max-w-3xl">
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-500">
+        <a href="/" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-neutral-800 font-medium">Projects</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">
+        Engineered Systems &amp; Case Studies
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 leading-relaxed">
+        Production applications, distributed services, and database-intensive platforms. Filter by technology to inspect how different stacks were applied.
+      </p>
+    </div>
+
+    <!-- Interactive Filterable Grid React Island -->
+    <ProjectGrid projects={projectItems} client:load />
+
+    <!-- Open Source & Architecture Notice -->
+    <div class="bg-white p-8 rounded-2xl border border-neutral-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-1 text-center md:text-left">
+        <h3 class="text-lg font-bold text-neutral-900">Need Custom Architecture or Code Audits?</h3>
+        <p class="text-xs sm:text-sm text-neutral-600">
+          I consult on database locking, query indexing, and full-stack performance bottlenecks.
+        </p>
+      </div>
+      <a
+        href="/contact"
+        class="px-6 py-3 rounded-xl font-mono text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white transition-all shrink-0 shadow-xs"
+      >
+        Inquire About Architecture Review ➔
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

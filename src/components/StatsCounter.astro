@@ -1,0 +1,38 @@
+---
+import { siteConfig } from '../config/site';
+
+const stats = [
+  {
+    label: 'Years of Experience',
+    value: `${siteConfig.stats.yearsExperience}+`,
+    subtext: 'Engineering production web systems',
+  },
+  {
+    label: 'Projects Delivered',
+    value: `${siteConfig.stats.completedProjects}+`,
+    subtext: 'Full-stack applications & portals',
+  },
+  {
+    label: 'Git Code Commits',
+    value: `${siteConfig.stats.gitCommits.toLocaleString()}+`,
+    subtext: 'Documented code changes & tests',
+  },
+  {
+    label: 'Cups of Coffee',
+    value: `${siteConfig.stats.cupsOfCoffee.toLocaleString()}`,
+    subtext: 'Fueling development sessions',
+  },
+];
+---
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 my-12">
+  {stats.map((item) => (
+    <div class="p-6 rounded-2xl bg-white border border-neutral-200/90 shadow-xs relative overflow-hidden group hover:border-neutral-400 hover:shadow-md transition-all">
+      <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-mono mb-2 text-neutral-900 group-hover:scale-[1.02] transition-transform origin-left">
+        {item.value}
+      </div>
+      <div class="text-sm font-semibold text-neutral-800 mb-1">{item.label}</div>
+      <div class="text-xs text-neutral-500 leading-relaxed">{item.subtext}</div>
+    </div>
+  ))}
+</div>

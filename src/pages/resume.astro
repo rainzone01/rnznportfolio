@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+---
+
+<BaseLayout
+  title={`Curriculum Vitae | ${siteConfig.name}`}
+  description="Printable and digital curriculum vitae detailing professional experience, certifications, and technical proficiencies."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+
+    <!-- Top Action Bar -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-neutral-200">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2 text-xs font-mono text-neutral-500">
+          <a href="/" class="hover:underline">Home</a>
+          <span>/</span>
+          <span class="text-neutral-800 font-medium">Resume</span>
+        </div>
+        <h1 class="text-3xl font-black text-neutral-900">Curriculum Vitae</h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button
+          onclick="window.print()"
+          class="px-4 py-2 rounded-xl bg-white border border-neutral-300 hover:bg-neutral-50 text-xs font-mono text-neutral-800 flex items-center gap-2 transition-all cursor-pointer shadow-2xs"
+        >
+          <span>🖨️ Print CV</span>
+        </button>
+
+        <a
+          href={siteConfig.resumeUrl}
+          download="resume.pdf"
+          class="px-5 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-xs font-mono font-semibold text-white shadow-xs transition-all flex items-center gap-2"
+        >
+          <span>⬇ Download PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Styled Resume Document Paper -->
+    <div class="bg-white p-8 sm:p-12 rounded-2xl border border-neutral-200 shadow-sm space-y-10 text-neutral-800">
+      
+      <!-- Resume Header -->
+      <div class="border-b border-neutral-200 pb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <h2 class="text-3xl font-black text-neutral-900 tracking-tight">{siteConfig.name}</h2>
+          <div class="text-sm font-mono text-neutral-700 font-semibold mt-1">{siteConfig.role}</div>
+          <div class="text-xs text-neutral-500 mt-1">{siteConfig.location} • {siteConfig.timezone}</div>
+        </div>
+
+        <div class="space-y-1 text-xs font-mono text-neutral-700 text-left sm:text-right">
+          <div>Email: <a href={`mailto:${siteConfig.email}`} class="text-neutral-900 font-semibold hover:underline">{siteConfig.email}</a></div>
+          <div>Phone: <span class="text-neutral-600">{siteConfig.phone}</span></div>
+          <div>Portfolio: <a href={siteConfig.siteUrl} class="text-neutral-900 font-semibold hover:underline">{siteConfig.siteUrl}</a></div>
+          <div>GitHub: <a href={siteConfig.socials.github} target="_blank" class="text-neutral-900 font-semibold hover:underline">{siteConfig.socials.github.replace('https://', '')}</a></div>
+        </div>
+      </div>
+
+      <!-- Professional Summary -->
+      <section class="space-y-3">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-neutral-500 font-bold">
+          Professional Summary
+        </h3>
+        <p class="text-sm text-neutral-700 leading-relaxed">
+          {siteConfig.bio} Proven track record developing real-world public sector and academic web solutions including the Bobon Katarungang Pambarangay System, RHU Inventory System, and university HRIS and Faculty Attendance modules using PHP, Next.js, Express.js, and MySQL.
+        </p>
+      </section>
+
+      <!-- Technical Proficiencies -->
+      <section class="space-y-3">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-neutral-500 font-bold">
+          Technical Arsenal
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+          <div class="p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+            <span class="text-neutral-900 font-bold">Languages &amp; Frontend:</span>
+            <div class="text-neutral-700 mt-1">PHP 8+, JavaScript (ES6+), TypeScript, React, Next.js, HTML5, CSS3, Tailwind CSS</div>
+          </div>
+          <div class="p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+            <span class="text-neutral-900 font-bold">Backend &amp; Frameworks:</span>
+            <div class="text-neutral-700 mt-1">Node.js, Express.js, PHP Backend, RESTful APIs, JSON Endpoints, MVC</div>
+          </div>
+          <div class="p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+            <span class="text-neutral-900 font-bold">Databases &amp; Systems:</span>
+            <div class="text-neutral-700 mt-1">MySQL, PostgreSQL, Relational Schema Normalization, Query Optimization, Foreign Keys</div>
+          </div>
+          <div class="p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+            <span class="text-neutral-900 font-bold">IT Support &amp; Tools:</span>
+            <div class="text-neutral-700 mt-1">Git, GitHub, Systems Administration, IT Hardware Troubleshooting, Technical Support</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="space-y-6">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-neutral-500 font-bold">
+          Work Experience
+        </h3>
+
+        <!-- Role 1: Computer Programmer - Bobon -->
+        <div class="space-y-2 border-l-2 border-neutral-900 pl-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-base font-bold text-neutral-900">Computer Programmer</h4>
+            <span class="text-xs font-mono text-neutral-600 font-medium">Mid October 2026 - Present</span>
+          </div>
+          <div class="text-xs font-mono text-neutral-500">Municipality of Bobon (LGU) • Bobon, Northern Samar</div>
+          <ul class="space-y-1.5 text-xs text-neutral-700 leading-relaxed pt-1 list-disc pl-4">
+            <li>Newly hired Computer Programmer responsible for developing, maintaining, and digitizing municipal software solutions and workflows.</li>
+            <li>Building and maintaining local government web systems including the Bobon Katarungang Pambarangay mediation system and Rural Health Unit (RHU) inventory system.</li>
+            <li>Providing technical assistance, hardware/software troubleshooting, and database administration across municipal departments to optimize public service delivery.</li>
+          </ul>
+        </div>
+
+        <!-- Role 2: Student Intern - UEP ICT Office -->
+        <div class="space-y-2 border-l-2 border-neutral-400 pl-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-base font-bold text-neutral-900">Student Intern (ICT Office)</h4>
+            <span class="text-xs font-mono text-neutral-600 font-medium">February 2026 - June 2026</span>
+          </div>
+          <div class="text-xs font-mono text-neutral-500">University of Eastern Philippines - ICT Office • Catarman, Northern Samar</div>
+          <ul class="space-y-1.5 text-xs text-neutral-700 leading-relaxed pt-1 list-disc pl-4">
+            <li>Contributed directly to the development and deployment of the university's Faculty Attendance System.</li>
+            <li>Provided hands-on technical assistance, computer hardware troubleshooting, and IT support to UEP administrative staff and faculty members.</li>
+            <li>Performed essential administrative office tasks, technical documentation, and day-to-day ICT Office operational support.</li>
+          </ul>
+        </div>
+
+        <!-- Role 3: Student Assistant - UEP ICT Office -->
+        <div class="space-y-2 border-l-2 border-neutral-300 pl-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-base font-bold text-neutral-900">Student Assistant (Software Development)</h4>
+            <span class="text-xs font-mono text-neutral-600 font-medium">2024 - 2025</span>
+          </div>
+          <div class="text-xs font-mono text-neutral-500">University of Eastern Philippines - ICT Office • Catarman, Northern Samar</div>
+          <ul class="space-y-1.5 text-xs text-neutral-700 leading-relaxed pt-1 list-disc pl-4">
+            <li>Contributed to the development of the University Human Resource Information System (HRIS).</li>
+            <li>Engineered responsive, accessible frontend modules and user interfaces using Next.js and Tailwind CSS.</li>
+            <li>Assisted in designing and implementing backend services, REST API endpoints, and data processing routines with Express.js and Node.js.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Education & Credentials -->
+      <section class="space-y-4">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-neutral-500 font-bold">
+          Education &amp; Applied Background
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-neutral-50 border border-neutral-200 space-y-1">
+            <div class="font-bold text-neutral-900">Bachelor of Science in Information Technology (BSIT)</div>
+            <div class="text-neutral-600">University of Eastern Philippines • Northern Samar, Philippines</div>
+            <div class="text-[11px] font-mono text-neutral-500 font-medium">Graduated 2026</div>
+          </div>
+          <div class="p-4 rounded-xl bg-neutral-50 border border-neutral-200 space-y-1">
+            <div class="font-bold text-neutral-900">University ICT Office &amp; LGU Experience</div>
+            <div class="text-neutral-600">UEP ICT Office &amp; Municipality of Bobon</div>
+            <div class="text-[11px] font-mono text-neutral-500 font-medium">Software Development, Systems Digitization &amp; IT Support</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</BaseLayout>

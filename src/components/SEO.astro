@@ -1,0 +1,81 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  pubDate?: Date;
+}
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.tagline,
+  image = '/og-image.png',
+  article = false,
+  pubDate,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteConfig.siteUrl);
+const pageTitle = title === siteConfig.title ? title : `${title} | ${siteConfig.name}`;
+
+// JSON-LD Structured Data
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": siteConfig.name,
+  "jobTitle": siteConfig.role,
+  "description": siteConfig.bio,
+  "url": siteConfig.siteUrl,
+  "sameAs": Object.values(siteConfig.socials).filter(Boolean),
+  "knowsAbout": [
+    "PHP", "JavaScript", "TypeScript", "React", "Next.js", 
+    "Node.js", "Express.js", "PostgreSQL", "MySQL", "Tailwind CSS"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": siteConfig.title,
+  "url": siteConfig.siteUrl,
+  "author": {
+    "@type": "Person",
+    "name": siteConfig.name
+  }
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="canonical" href={canonicalURL} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+<meta name="author" content={siteConfig.name} />
+<meta name="theme-color" content="#f8f9fa" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={article ? 'article' : 'website'} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, canonicalURL)} />
+<meta property="og:site_name" content={siteConfig.name} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={pageTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

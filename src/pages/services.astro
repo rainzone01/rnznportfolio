@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { servicesData, processSteps } from '../data/services';
+---
+
+<BaseLayout
+  title="Services & Solutions | Senior Full-Stack Engineer"
+  description="Consulting and engineering services: Custom full-stack web applications, high-throughput REST APIs, database indexing, and legacy modernization."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
+    <!-- Header -->
+    <div class="space-y-3 max-w-3xl">
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-500">
+        <a href="/" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-neutral-800 font-medium">Services &amp; Offerings</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">
+        Engineering Services
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 leading-relaxed">
+        Specialized capabilities for companies needing senior engineering leadership, resilient backend architectures, and high-performance web applications.
+      </p>
+    </div>
+
+    <!-- Service Offerings Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {servicesData.map((service) => (
+        <div class="bg-white p-8 rounded-2xl border border-neutral-200 shadow-xs hover:border-neutral-400 hover:shadow-md transition-all flex flex-col justify-between group">
+          <div>
+            <!-- Accent Top Marker -->
+            <div class="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center font-mono font-bold text-sm text-neutral-800 mb-6">
+              &lt;/&gt;
+            </div>
+
+            <h3 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-neutral-700 transition-colors">
+              {service.title}
+            </h3>
+
+            <p class="text-xs font-mono text-neutral-500 mb-4 font-medium">
+              {service.tagline}
+            </p>
+
+            <p class="text-sm text-neutral-600 leading-relaxed mb-6">
+              {service.description}
+            </p>
+
+            <!-- Deliverables -->
+            <div class="space-y-2 mb-6">
+              <span class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider font-semibold">
+                Key Deliverables:
+              </span>
+              <ul class="space-y-1.5 text-xs text-neutral-700">
+                {service.deliverables.map((del) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-700 font-bold shrink-0">✔</span>
+                    <span>{del}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <!-- Tech badges -->
+            <div class="pt-4 border-t border-neutral-100 flex flex-wrap gap-1.5 mb-6">
+              {service.technologies.map((t) => (
+                <span class="px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200 text-[10px] font-mono text-neutral-700">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="/contact"
+              class="w-full py-2.5 rounded-xl font-mono text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center gap-1.5 transition-all shadow-xs"
+            >
+              <span>Inquire About This Service</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 5-Step Engineering Workflow -->
+    <div class="space-y-10">
+      <div class="text-center max-w-xl mx-auto">
+        <span class="text-xs font-mono text-neutral-600 uppercase tracking-wider font-semibold px-2.5 py-1 bg-neutral-200/60 rounded-md inline-block">
+          Methodology &amp; Execution
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mt-2">
+          How Projects Are Delivered
+        </h2>
+        <p class="text-xs sm:text-sm text-neutral-600 mt-1">
+          A disciplined, milestone-driven workflow that prioritizes data integrity and zero unexpected regressions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {processSteps.map((step) => (
+          <div class="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs space-y-3 relative overflow-hidden group hover:border-neutral-400 transition-all">
+            <span class="text-3xl font-black font-mono text-neutral-300 group-hover:text-neutral-900 transition-colors">
+              {step.step}
+            </span>
+            <h3 class="text-base font-bold text-neutral-900">{step.title}</h3>
+            <p class="text-xs text-neutral-600 leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Engagement Models -->
+    <div class="bg-white p-8 sm:p-12 rounded-3xl border border-neutral-200 shadow-sm space-y-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900">
+          Flexible Engagement Models
+        </h2>
+        <p class="text-sm text-neutral-600 mt-2">
+          Structured to suit product development phases, urgent optimizations, or long-term advisory.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-4">
+          <div class="text-xs font-mono text-neutral-500 font-bold uppercase">Option A</div>
+          <h3 class="text-lg font-bold text-neutral-900">Fixed-Scope Milestone</h3>
+          <p class="text-xs text-neutral-600 leading-relaxed">
+            Ideal for greenfield web apps, digitized portals, or bounded feature deliveries with concrete technical specs.
+          </p>
+          <ul class="text-xs font-mono text-neutral-700 space-y-2 pt-2">
+            <li>• Clear deliverable timelines</li>
+            <li>• Milestone-based payouts</li>
+            <li>• Architecture documentation</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white border-2 border-neutral-900 shadow-xs space-y-4 relative">
+          <span class="absolute top-3 right-3 text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-900 text-white">
+            Most Popular
+          </span>
+          <div class="text-xs font-mono text-neutral-700 font-bold uppercase">Option B</div>
+          <h3 class="text-lg font-bold text-neutral-900">Dedicated Engineering Sprint</h3>
+          <p class="text-xs text-neutral-600 leading-relaxed">
+            Hands-on technical horsepower integrated directly into your sprint cycle to ship complex features and refactorings.
+          </p>
+          <ul class="text-xs font-mono text-neutral-700 space-y-2 pt-2">
+            <li>• Full codebase familiarity</li>
+            <li>• Direct Slack/GitHub coordination</li>
+            <li>• Daily commits &amp; async updates</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-4">
+          <div class="text-xs font-mono text-neutral-500 font-bold uppercase">Option C</div>
+          <h3 class="text-lg font-bold text-neutral-900">Database &amp; Query Audit</h3>
+          <p class="text-xs text-neutral-600 leading-relaxed">
+            Rapid 1-week deep-dive into your PostgreSQL or MySQL slow queries, schema locking bottlenecks, and index optimizations.
+          </p>
+          <ul class="text-xs font-mono text-neutral-700 space-y-2 pt-2">
+            <li>• EXPLAIN ANALYZE profile report</li>
+            <li>• Compound index migrations</li>
+            <li>• 2x to 10x latency speedup target</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Banner -->
+    <div class="text-center pt-4">
+      <a 
+        href="/contact" 
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-mono text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white shadow-xs transition-all"
+      >
+        <span>Schedule Initial Technical Discovery Call</span>
+        <span>➔</span>
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

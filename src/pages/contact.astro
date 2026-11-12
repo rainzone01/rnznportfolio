@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm';
+import { siteConfig } from '../config/site';
+
+const contactFaqs = [
+  {
+    q: "What types of engagements do you take on?",
+    a: "I work on full-stack web applications, high-concurrency API engineering, database schema and index optimizations (PostgreSQL/MySQL), and full-time senior engineering opportunities."
+  },
+  {
+    q: "What is your typical availability and start time?",
+    a: "Currently open for new technical projects and contracts. Depending on project scope, discovery and architecture blueprints typically initiate within 5 business days."
+  },
+  {
+    q: "Do you offer code audits for existing applications?",
+    a: "Yes. I frequently perform 1-week architecture reviews focusing on database locking bottlenecks, N+1 query elimination, and frontend Lighthouse optimization."
+  }
+];
+---
+
+<BaseLayout
+  title={`Contact & Inquiries | ${siteConfig.name}`}
+  description="Initiate a project inquiry, request a database performance audit, or discuss full-stack engineering opportunities."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+
+    <!-- Header -->
+    <div class="space-y-3 max-w-2xl">
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-500">
+        <a href="/" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-neutral-800 font-medium">Contact</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">
+        Let's Build Something Resilient
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 leading-relaxed">
+        Have an upcoming product launch, legacy modernization initiative, or database bottleneck? Send a message and let's coordinate a technical discussion.
+      </p>
+    </div>
+
+    <!-- Main Grid: Info Cards (Left) + Contact Form (Right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Left Column: Direct Details & Socials (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Status Card -->
+        <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-sm space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+            <span class="text-xs font-mono text-emerald-700 font-bold uppercase tracking-wider">
+              {siteConfig.availability}
+            </span>
+          </div>
+          <p class="text-xs text-neutral-600 leading-relaxed">
+            Ready for Q1/Q2 sprint cycles, greenfield builds, and technical advisory.
+          </p>
+          <div class="pt-2 border-t border-neutral-100 font-mono text-xs text-neutral-700">
+            Current Timezone: <strong class="text-neutral-900 font-semibold">{siteConfig.timezone}</strong>
+          </div>
+        </div>
+
+        <!-- Contact Channels -->
+        <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-sm space-y-4">
+          <h3 class="text-sm font-bold text-neutral-900 font-mono uppercase tracking-wider">
+            Direct Coordinates
+          </h3>
+
+          <div class="space-y-3 text-xs font-mono">
+            <div>
+              <div class="text-neutral-500">Email Address</div>
+              <a href={`mailto:${siteConfig.email}`} class="text-neutral-900 hover:underline font-semibold text-sm">
+                {siteConfig.email}
+              </a>
+            </div>
+
+            <div>
+              <div class="text-neutral-500">Phone / WhatsApp</div>
+              <div class="text-neutral-800 font-semibold">{siteConfig.phone}</div>
+            </div>
+
+            <div>
+              <div class="text-neutral-500">Physical Base</div>
+              <div class="text-neutral-800">{siteConfig.location}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Network Hub -->
+        <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-sm space-y-4">
+          <h3 class="text-sm font-bold text-neutral-900 font-mono uppercase tracking-wider">
+            Professional Networks
+          </h3>
+
+          <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+            <a
+              href={siteConfig.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-3 rounded-xl bg-neutral-50 border border-neutral-200 hover:border-neutral-400 text-neutral-700 hover:text-neutral-900 transition-all flex items-center justify-between"
+            >
+              <span>GitHub</span>
+              <span>↗</span>
+            </a>
+            <a
+              href={siteConfig.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-3 rounded-xl bg-neutral-50 border border-neutral-200 hover:border-neutral-400 text-neutral-700 hover:text-neutral-900 transition-all flex items-center justify-between"
+            >
+              <span>LinkedIn</span>
+              <span>↗</span>
+            </a>
+            <a
+              href={siteConfig.socials.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="p-3 rounded-xl bg-neutral-50 border border-neutral-200 hover:border-neutral-400 text-neutral-700 hover:text-neutral-900 transition-all flex items-center justify-between"
+            >
+              <span>X / Twitter</span>
+              <span>↗</span>
+            </a>
+            <a
+              href="/resume"
+              class="p-3 rounded-xl bg-neutral-50 border border-neutral-200 hover:border-neutral-400 text-neutral-700 hover:text-neutral-900 transition-all flex items-center justify-between"
+            >
+              <span>Online CV</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Form Island (7 cols) -->
+      <div class="lg:col-span-7">
+        <ContactForm client:load />
+      </div>
+
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="bg-white p-8 sm:p-12 rounded-3xl border border-neutral-200 shadow-sm space-y-8">
+      <div class="space-y-2">
+        <span class="text-xs font-mono text-neutral-600 font-semibold tracking-wider uppercase px-2.5 py-1 bg-neutral-100 rounded-md inline-block">
+          Client Clarifications
+        </span>
+        <h2 class="text-2xl font-bold text-neutral-900 mt-2">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {contactFaqs.map((faq) => (
+          <div class="p-5 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-2">
+            <h3 class="text-sm font-bold text-neutral-900">{faq.q}</h3>
+            <p class="text-xs text-neutral-600 leading-relaxed">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>

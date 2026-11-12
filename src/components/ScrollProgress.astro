@@ -1,0 +1,31 @@
+---
+---
+<div 
+  id="scroll-progress-container"
+  class="fixed top-0 left-0 right-0 h-0.5 z-50 pointer-events-none bg-transparent"
+>
+  <div 
+    id="scroll-progress-bar"
+    class="h-full bg-neutral-900 w-0 transition-all duration-75 ease-out"
+  ></div>
+</div>
+
+<script>
+  function setupScrollProgress() {
+    const bar = document.getElementById('scroll-progress-bar');
+    if (!bar) return;
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = `${progress}%`;
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  setupScrollProgress();
+  document.addEventListener('astro:page-load', setupScrollProgress);
+</script>

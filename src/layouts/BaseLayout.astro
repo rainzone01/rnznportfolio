@@ -1,0 +1,88 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import SEO from '../components/SEO.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ScrollProgress from '../components/ScrollProgress.astro';
+import BackToTop from '../components/BackToTop.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  pubDate?: Date;
+}
+
+const { title, description, image, article, pubDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-[#f8f9fa] text-neutral-900">
+  <head>
+    <SEO 
+      title={title} 
+      description={description} 
+      image={image} 
+      article={article} 
+      pubDate={pubDate} 
+    />
+    
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" 
+      rel="stylesheet" 
+    />
+
+    <!-- Astro View Transitions -->
+    <ClientRouter />
+  </head>
+  <body class="bg-[#f8f9fa] text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white min-h-screen flex flex-col relative overflow-x-hidden">
+    
+    <!-- Global UI Layer -->
+    <ScrollProgress />
+
+    <!-- Navigation Header -->
+    <Navbar />
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-1 relative z-10">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
+    <BackToTop />
+
+    <!-- Lenis Smooth Scroll Script -->
+    <script>
+      import Lenis from 'lenis';
+
+      function initSmoothScroll() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          touchMultiplier: 2,
+        });
+
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+      }
+
+      initSmoothScroll();
+      document.addEventListener('astro:page-load', initSmoothScroll);
+    </script>
+  </body>
+</html>

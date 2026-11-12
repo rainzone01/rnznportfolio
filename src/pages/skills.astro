@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SkillSphere from '../components/SkillSphere';
+import { skillsData, skillCategories } from '../data/skills';
+---
+
+<BaseLayout
+  title="Tech Stack & Skills | Senior Full-Stack Engineer"
+  description="Comprehensive technical proficiencies spanning PHP, Node.js, Express, React, Next.js, PostgreSQL, MySQL, and DevOps infrastructure."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+
+    <!-- Header -->
+    <div class="space-y-3 max-w-3xl">
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-500">
+        <a href="/" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-neutral-800 font-medium">Skills &amp; Tech Stack</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">
+        Technical Competencies
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 leading-relaxed">
+        An engineering toolkit honed through 5+ years of shipping enterprise web systems, high-concurrency APIs, and normalized database schemas.
+      </p>
+    </div>
+
+    <!-- 3D Orbiting Skill Sphere Section -->
+    <div class="bg-white p-6 sm:p-10 rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-5 space-y-4 text-center lg:text-left">
+          <span class="text-xs font-mono text-neutral-600 font-semibold tracking-wider uppercase px-2.5 py-1 bg-neutral-100 rounded-md inline-block">
+            3D Spatial Tag Cloud
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900">
+            Interactive Orbiting Skill Cloud
+          </h2>
+          <p class="text-sm text-neutral-600 leading-relaxed">
+            Drag or hover over the sphere to rotate and inspect the core technologies across my full-stack workflow.
+          </p>
+
+          <div class="pt-4 flex flex-wrap gap-2 justify-center lg:justify-start">
+            <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-neutral-200 text-xs font-mono text-neutral-700">
+              60 FPS Canvas
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-neutral-200 text-xs font-mono text-neutral-700">
+              Fibonacci Sphere
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-neutral-100 border border-neutral-200 text-xs font-mono text-neutral-700">
+              Interactive Physics
+            </span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex items-center justify-center">
+          <SkillSphere client:visible />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Categorized Skill Cards with Proficiency Indicators -->
+    <div class="space-y-12">
+      {skillCategories.map((category) => {
+        const categorySkills = skillsData.filter((s) => s.category === category);
+        return (
+          <div class="space-y-6">
+            <div class="flex items-center gap-3 pb-2 border-b border-neutral-200">
+              <h2 class="text-2xl font-bold text-neutral-900">{category}</h2>
+              <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-700 border border-neutral-200">
+                {categorySkills.length} Technologies
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {categorySkills.map((skill) => (
+                <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-xs hover:border-neutral-400 hover:shadow-md transition-all flex flex-col justify-between group">
+                  <div>
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                      <h3 class="text-base font-bold text-neutral-900 group-hover:text-neutral-700 transition-colors">
+                        {skill.name}
+                      </h3>
+                      {skill.badgeText && (
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 border border-neutral-200">
+                          {skill.badgeText}
+                        </span>
+                      )}
+                    </div>
+
+                    <p class="text-xs text-neutral-600 leading-relaxed mb-4">
+                      {skill.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    {/* Proficiency bar */}
+                    <div class="space-y-1.5 pt-2 border-t border-neutral-100">
+                      <div class="flex items-center justify-between text-[11px] font-mono">
+                        <span class="text-neutral-500">Proficiency</span>
+                        <span class="text-neutral-900 font-semibold">{skill.proficiency}%</span>
+                      </div>
+                      <div class="w-full bg-neutral-100 rounded-full h-1.5 overflow-hidden">
+                        <div 
+                          class="h-full bg-neutral-900 rounded-full transition-all duration-1000"
+                          style={`width: ${skill.proficiency}%`}
+                        ></div>
+                      </div>
+                      <div class="flex items-center justify-between text-[10px] font-mono text-neutral-500 pt-1">
+                        <span>Experience</span>
+                        <span>{skill.years} {skill.years === 1 ? 'Year' : 'Years'}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</BaseLayout>

@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DeveloperTerminal from '../components/DeveloperTerminal';
+import { siteConfig } from '../config/site';
+
+const values = [
+  {
+    title: 'Relational Integrity & Database Performance',
+    description: 'Conscious database design with PostgreSQL and MySQL: writing normalized schemas, selecting compound B-Tree indexes, and preventing N+1 queries.',
+    icon: '⚡',
+    tag: 'Database & Backend'
+  },
+  {
+    title: 'Full-Stack Type Safety & Validation',
+    description: 'Ensuring data integrity from client input to server storage using TypeScript, strict input validation, and clean RESTful API endpoint contracts.',
+    icon: '🛡️',
+    tag: 'Code Quality'
+  },
+  {
+    title: 'Responsive & Accessible Interfaces',
+    description: 'Crafting user interfaces with modern React, Next.js, and Tailwind CSS that feel responsive, fast, and accessible across mobile, tablet, and desktop.',
+    icon: '✨',
+    tag: 'Frontend Craft'
+  },
+  {
+    title: 'Pragmatic Engineering & Continuous Growth',
+    description: 'Prioritizing maintainable, readable code and practical solutions over hype, continuously learning emerging patterns across the modern web ecosystem.',
+    icon: '🏗️',
+    tag: 'Engineering Mindset'
+  }
+];
+---
+
+<BaseLayout
+  title={`About ${siteConfig.name} | Full Stack Web Developer`}
+  description={siteConfig.bio}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
+    <!-- Header & Breadcrumbs -->
+    <div class="space-y-3">
+      <div class="flex items-center gap-2 text-xs font-mono text-neutral-500">
+        <a href="/" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-neutral-800 font-medium">About</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">
+        About Lorenzon Emmanuel S. Ahorro
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-600 max-w-2xl leading-relaxed">
+        Full Stack Web Developer and BSIT graduate based in Bobon, Northern Samar, passionate about architecting responsive web applications and reliable backend systems.
+      </p>
+    </div>
+
+    <!-- Bio & Avatar Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      <!-- Photo / Profile Card Column (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="rounded-2xl bg-white border border-neutral-200/90 shadow-sm p-6 overflow-hidden">
+          <!-- Avatar Frame -->
+          <div class="w-full aspect-square rounded-xl bg-neutral-100 flex flex-col items-center justify-center relative overflow-hidden border border-neutral-200 p-6">
+            
+            <!-- Center Avatar Symbol -->
+            <div class="relative z-10 w-24 h-24 rounded-2xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-900 text-3xl font-mono font-bold shadow-xs">
+              &lt;LA/&gt;
+            </div>
+
+            <span class="relative z-10 text-base font-bold text-neutral-900 mt-4 text-center">
+              {siteConfig.name}
+            </span>
+            <span class="relative z-10 text-xs font-mono text-neutral-600 mt-0.5">
+              {siteConfig.role}
+            </span>
+            <span class="relative z-10 text-[11px] font-mono text-neutral-500 mt-0.5">
+              BSIT Graduate
+            </span>
+
+            <!-- Corner Status Badge -->
+            <div class="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg bg-white/95 border border-neutral-200 flex items-center justify-between text-[11px] font-mono shadow-2xs">
+              <span class="text-neutral-600">📍 {siteConfig.location}</span>
+              <span class="text-emerald-700 font-semibold flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                Available
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Specs Under Avatar -->
+          <div class="mt-6 space-y-2.5 font-mono text-xs">
+            <div class="flex items-center justify-between py-1.5 border-b border-neutral-100">
+              <span class="text-neutral-500">Current Role</span>
+              <span class="text-neutral-900 font-semibold">Computer Programmer (Bobon)</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-neutral-100">
+              <span class="text-neutral-500">Education</span>
+              <span class="text-neutral-900 font-semibold">BSIT Graduate</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-neutral-100">
+              <span class="text-neutral-500">Location</span>
+              <span class="text-neutral-900 font-semibold">{siteConfig.location}</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-neutral-100">
+              <span class="text-neutral-500">Core Stack</span>
+              <span class="text-neutral-900 font-semibold">PHP • JS • React • SQL</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5 border-b border-neutral-100">
+              <span class="text-neutral-500">Timezone</span>
+              <span class="text-neutral-800">{siteConfig.timezone}</span>
+            </div>
+            <div class="flex items-center justify-between py-1.5">
+              <span class="text-neutral-500">Direct Email</span>
+              <a href={`mailto:${siteConfig.email}`} class="text-neutral-900 font-semibold hover:underline">
+                {siteConfig.email}
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="pt-6 grid grid-cols-2 gap-3">
+            <a
+              href="/resume"
+              class="py-2.5 rounded-xl bg-white border border-neutral-300 text-neutral-800 hover:bg-neutral-50 text-xs font-mono font-semibold text-center transition-all shadow-2xs"
+            >
+              View Resume
+            </a>
+            <a
+              href="/contact"
+              class="py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-mono font-semibold text-center transition-all shadow-xs"
+            >
+              Contact Me
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Narrative Backstory Column (7 cols) -->
+      <div class="lg:col-span-7 space-y-6 text-neutral-700 leading-relaxed text-sm sm:text-base">
+        <h2 class="text-2xl font-bold text-neutral-900 flex items-center gap-2">
+          <span>Engineering Journey &amp; Focus</span>
+          <span class="w-8 h-[2px] bg-neutral-900"></span>
+        </h2>
+
+        <p>
+          Hello! I'm <strong class="text-neutral-900">Lorenzon Emmanuel S. Ahorro</strong>, a Full Stack Web Developer, <strong class="text-neutral-900">Bachelor of Science in Information Technology (BSIT)</strong> graduate, and newly appointed <strong class="text-neutral-900">Computer Programmer for the Municipality of Bobon, Northern Samar</strong>.
+        </p>
+
+        <p>
+          My technical journey includes key contributions to enterprise institutional platforms at the <strong class="text-neutral-900">University of Eastern Philippines (UEP) ICT Office</strong>—first as a Student Assistant developing modern frontend modules in <strong class="text-neutral-900">Next.js and Tailwind CSS</strong> and assisting backend logic in <strong class="text-neutral-900">Express.js</strong> for the university's Human Resource Information System (HRIS), and subsequently as a Student Intern contributing to the Faculty Attendance System and providing technical IT support to university personnel.
+        </p>
+
+        <p>
+          Today, as Computer Programmer for the Local Government Unit of Bobon, I lead the digitization of essential public service platforms—such as the <strong class="text-neutral-900">Bobon Katarungang Pambarangay System</strong> and <strong class="text-neutral-900">Rural Health Unit Inventory System</strong>—delivering reliable software and database architectures with PHP, JavaScript, and MySQL.
+        </p>
+
+        <div class="pt-4 grid grid-cols-2 gap-4 font-mono">
+          <div class="p-4 rounded-xl bg-white border border-neutral-200 shadow-2xs">
+            <div class="text-neutral-900 text-2xl font-bold">5</div>
+            <div class="text-xs text-neutral-500 mt-1">Completed Web Projects &amp; Systems</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-neutral-200 shadow-2xs">
+            <div class="text-neutral-900 text-2xl font-bold">BSIT</div>
+            <div class="text-xs text-neutral-500 mt-1">Information Technology Graduate</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-neutral-100 border border-neutral-200 text-xs text-neutral-700 space-y-2">
+          <div class="text-neutral-900 font-bold flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-neutral-900"></span>
+            <span>What I Bring to Your Team or Project:</span>
+          </div>
+          <p>
+            Direct hands-on experience in full-stack web workflows, clear communication, prompt delivery, and enthusiasm for writing clean, maintainable code that delivers real value.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Interactive Developer Terminal Section -->
+    <div class="space-y-6">
+      <div class="text-center max-w-xl mx-auto">
+        <span class="text-xs font-mono text-neutral-600 uppercase tracking-wider font-semibold px-2.5 py-1 bg-neutral-200/60 rounded-md inline-block">
+          Interactive Shell
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mt-2">
+          Interactive Developer Terminal
+        </h2>
+        <p class="text-xs sm:text-sm text-neutral-600 mt-1">
+          Type commands or click the suggestion buttons to query my background, degree, skills, and projects.
+        </p>
+      </div>
+
+      <!-- Working React Island Terminal -->
+      <DeveloperTerminal client:load />
+    </div>
+
+    <!-- Core Engineering Values -->
+    <div class="space-y-8">
+      <div class="text-center max-w-xl mx-auto">
+        <span class="text-xs font-mono text-neutral-600 uppercase tracking-wider font-semibold px-2.5 py-1 bg-neutral-200/60 rounded-md inline-block">
+          Standards &amp; Principles
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900 mt-2">
+          How I Approach Software
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {values.map((val) => (
+          <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-xs hover:border-neutral-400 hover:shadow-md transition-all">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl">{val.icon}</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200 text-neutral-700">
+                {val.tag}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-neutral-900 mb-2">{val.title}</h3>
+            <p class="text-sm text-neutral-600 leading-relaxed">{val.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom Actions Banner -->
+    <div class="text-center pt-8 flex flex-wrap items-center justify-center gap-4">
+      <a 
+        href="/projects" 
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-mono text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white shadow-xs transition-all"
+      >
+        <span>Explore Projects Catalog</span>
+        <span>➔</span>
+      </a>
+      <a 
+        href="/contact" 
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-mono text-xs font-semibold bg-white border border-neutral-300 text-neutral-800 hover:bg-neutral-50 transition-all shadow-2xs"
+      >
+        <span>Get in Touch Directly</span>
+        <span>➔</span>
+      </a>
+    </div>
+
+  </div>
+</BaseLayout>

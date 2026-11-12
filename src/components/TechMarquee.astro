@@ -1,0 +1,38 @@
+---
+const techItems = [
+  { name: 'PHP 8.2+', color: '#777bb4', symbol: '🐘' },
+  { name: 'React 19', color: '#61dafb', symbol: '⚛️' },
+  { name: 'Next.js', color: '#ffffff', symbol: '▲' },
+  { name: 'Node.js', color: '#339933', symbol: '🟢' },
+  { name: 'Express.js', color: '#e2e8f0', symbol: '⚡' },
+  { name: 'PostgreSQL', color: '#4169e1', symbol: '🐘' },
+  { name: 'MySQL', color: '#4479a1', symbol: '🐬' },
+  { name: 'Tailwind CSS', color: '#38bdf8', symbol: '🌊' },
+  { name: 'TypeScript', color: '#3178c6', symbol: '🔷' },
+  { name: 'JavaScript', color: '#f7df1e', symbol: '🟨' },
+  { name: 'HTML5', color: '#e34f26', symbol: '🌐' },
+  { name: 'CSS3', color: '#1572b6', symbol: '🎨' },
+  { name: 'Redis', color: '#dc382d', symbol: '🔴' },
+  { name: 'Docker', color: '#2496ed', symbol: '🐳' },
+  { name: 'Git & GitHub', color: '#f05032', symbol: '🐙' },
+  { name: 'Nginx', color: '#009639', symbol: '⚙️' },
+];
+---
+
+<div class="relative w-full overflow-hidden py-6 border-y border-neutral-200/80 bg-neutral-100/40 select-none">
+  <!-- Left and right gradient masks for smooth edge fade -->
+  <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#f8f9fa] to-transparent z-10"></div>
+  <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#f8f9fa] to-transparent z-10"></div>
+
+  <!-- Marquee Track -->
+  <div class="animate-marquee flex items-center gap-4">
+    {techItems.concat(techItems).map((tech) => (
+      <div class="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white border border-neutral-200/90 shadow-2xs hover:border-neutral-400 hover:shadow-xs transition-all shrink-0 group">
+        <span class="text-base">{tech.symbol}</span>
+        <span class="text-xs font-mono font-medium text-neutral-800 group-hover:text-neutral-900 transition-colors">
+          {tech.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>

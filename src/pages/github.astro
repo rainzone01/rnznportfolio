@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GitHubHeatmap from '../components/GitHubHeatmap';
+import { 
+  githubProfile, 
+  githubTopLanguages, 
+  githubPinnedRepos, 
+  githubRecentCommits 
+} from '../data/github';
+import { siteConfig } from '../config/site';
+---
+
+<BaseLayout
+  title={`GitHub Code Activity | ${siteConfig.name}`}
+  description="Real-time open source contributions, repositories, commit feed, and language telemetry."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+
+    <!-- Header & Profile Card -->
+    <div class="bg-white p-8 sm:p-10 rounded-2xl border border-neutral-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+        <div class="relative w-20 h-20 rounded-2xl bg-neutral-100 border border-neutral-300 flex items-center justify-center font-mono font-bold text-2xl text-neutral-900 shrink-0 shadow-xs">
+          &lt;/&gt;
+        </div>
+        <div class="space-y-2">
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <h1 class="text-2xl sm:text-3xl font-black text-neutral-900">{githubProfile.displayName}</h1>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-neutral-100 border border-neutral-200 text-neutral-700">
+              @{githubProfile.username}
+            </span>
+          </div>
+          <p class="text-sm text-neutral-600 max-w-xl">
+            {githubProfile.bio}
+          </p>
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-mono text-neutral-600 pt-1">
+            <span>📦 <strong class="text-neutral-900">{githubProfile.publicRepos}</strong> Repositories</span>
+            <span>⭐ <strong class="text-neutral-900">750+</strong> Total Stars</span>
+            <span>👥 <strong class="text-neutral-900">{githubProfile.followers}</strong> Followers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <a
+          href={siteConfig.socials.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-5 py-2.5 rounded-xl font-mono text-xs font-semibold bg-neutral-900 hover:bg-neutral-800 text-white flex items-center gap-2 transition-all shadow-xs"
+        >
+          <span>View GitHub Profile</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 52-Week Contribution Heatmap Island -->
+    <GitHubHeatmap client:load />
+
+    <!-- Languages Breakdown & Recent Commits Feed Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Top Languages (5 cols) -->
+      <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-sm space-y-6">
+        <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
+          <h3 class="text-base font-bold text-neutral-900">Top Languages</h3>
+          <span class="text-[11px] font-mono text-neutral-500">By Bytes Authored</span>
+        </div>
+
+        <!-- Multi-segment bar -->
+        <div class="h-3 w-full rounded-full overflow-hidden flex bg-neutral-100">
+          {githubTopLanguages.map((lang) => (
+            <div 
+              style={`width: ${lang.percentage}%; background-color: ${lang.color};`}
+              title={`${lang.name}: ${lang.percentage}%`}
+            />
+          ))}
+        </div>
+
+        <!-- Languages List -->
+        <div class="space-y-3 font-mono text-xs">
+          {githubTopLanguages.map((lang) => (
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full shrink-0" style={`background-color: ${lang.color}`}></span>
+                <span class="text-neutral-800 font-semibold">{lang.name}</span>
+              </div>
+              <span class="text-neutral-500">{lang.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Recent Commit Feed (7 cols) -->
+      <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-sm space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
+          <h3 class="text-base font-bold text-neutral-900 flex items-center gap-2">
+            <span>Recent Commit Activity</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          </h3>
+          <span class="text-[11px] font-mono text-neutral-500">Live Git Graph</span>
+        </div>
+
+        <div class="space-y-3 font-mono text-xs">
+          {githubRecentCommits.map((commit) => (
+            <div class="p-3.5 rounded-xl bg-neutral-50 border border-neutral-200/80 hover:border-neutral-300 transition-colors space-y-2">
+              <div class="flex items-center justify-between text-[11px] text-neutral-500">
+                <div class="flex items-center gap-2">
+                  <span class="text-neutral-900 font-bold">{commit.repo}</span>
+                  <span>•</span>
+                  <span class="text-neutral-600">{commit.branch}</span>
+                </div>
+                <span>{commit.date}</span>
+              </div>
+              <div class="text-neutral-800 text-xs font-mono leading-relaxed">
+                {commit.message}
+              </div>
+              <div class="text-[10px] text-neutral-500 pt-1">
+                commit <span class="text-neutral-700 font-medium">{commit.id}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pinned Repositories Grid -->
+    <div class="space-y-6">
+      <div class="flex items-center justify-between pb-2 border-b border-neutral-200">
+        <h3 class="text-xl font-bold text-neutral-900">Pinned Repositories</h3>
+        <span class="text-xs font-mono text-neutral-500">{githubPinnedRepos.length} Repos</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {githubPinnedRepos.map((repo) => (
+          <div class="bg-white p-6 rounded-2xl border border-neutral-200 shadow-xs hover:border-neutral-400 hover:shadow-md transition-all flex flex-col justify-between group">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h4 class="text-base font-bold text-neutral-900 group-hover:text-neutral-700 font-mono truncate">
+                  <a href={repo.url} target="_blank" rel="noopener noreferrer">
+                    {repo.name}
+                  </a>
+                </h4>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200 text-neutral-700">
+                  Public
+                </span>
+              </div>
+
+              <p class="text-xs text-neutral-600 leading-relaxed">
+                {repo.description}
+              </p>
+
+              <!-- Topics -->
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                {repo.topics.map((topic) => (
+                  <span class="px-2 py-0.5 rounded bg-neutral-100 text-[10px] font-mono text-neutral-600 border border-neutral-200">
+                    {topic}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Footer Meta -->
+            <div class="pt-4 border-t border-neutral-100 flex items-center justify-between text-xs font-mono text-neutral-600">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full" style={`background-color: ${repo.languageColor}`}></span>
+                <span class="text-neutral-800 font-medium">{repo.language}</span>
+              </div>
+              <div class="flex items-center gap-3 text-neutral-500">
+                <span>⭐ {repo.stars}</span>
+                <span>🍴 {repo.forks}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- API Replacement Callout Notice -->
+    <div class="p-6 rounded-2xl bg-neutral-100 border border-neutral-200 font-mono text-xs text-neutral-700 space-y-2">
+      <div class="flex items-center gap-2 text-neutral-900 font-bold">
+        <span>⚙️ DEVELOPER INTEGRATION NOTE</span>
+      </div>
+      <p>
+        The data above is driven by <code class="text-neutral-900 font-semibold bg-white px-1.5 py-0.5 rounded border border-neutral-300">src/data/github.ts</code>. To connect your live GitHub profile, configure <code class="text-neutral-900 font-semibold bg-white px-1.5 py-0.5 rounded border border-neutral-300">GITHUB_TOKEN</code> and <code class="text-neutral-900 font-semibold bg-white px-1.5 py-0.5 rounded border border-neutral-300">PUBLIC_GITHUB_USERNAME</code> in <code class="text-neutral-900 font-semibold bg-white px-1.5 py-0.5 rounded border border-neutral-300">.env</code> and fetch directly from GitHub's GraphQL v4 endpoint during static build!
+      </p>
+    </div>
+
+  </div>
+</BaseLayout>
