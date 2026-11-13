@@ -8,7 +8,6 @@ import {
   Briefcase, 
   Wrench, 
   Github, 
-  BookOpen, 
   FileText, 
   Mail, 
   Copy, 
@@ -57,12 +56,12 @@ export default function CommandPalette() {
     { id: 'nav-exp', title: 'Experience & Timeline', subtitle: 'Work history, education & credentials', category: 'Navigation', icon: Briefcase, handler: () => navigateTo('/experience') },
     { id: 'nav-services', title: 'Services & Offerings', subtitle: 'Full-stack engineering & system modernization', category: 'Navigation', icon: Wrench, handler: () => navigateTo('/services') },
     { id: 'nav-github', title: 'GitHub Activity', subtitle: 'Commit heatmap, pinned repos & code stats', category: 'Navigation', icon: Github, handler: () => navigateTo('/github') },
-    { id: 'nav-blog', title: 'Engineering Blog', subtitle: 'Deep dives on PHP, Node, SQL & Architecture', category: 'Navigation', icon: BookOpen, handler: () => navigateTo('/blog') },
     { id: 'nav-resume', title: 'Resume / CV', subtitle: 'Digital curriculum vitae & PDF download', category: 'Navigation', icon: FileText, handler: () => navigateTo('/resume') },
     { id: 'nav-contact', title: 'Contact Me', subtitle: 'Start a project or send an inquiry', category: 'Navigation', icon: Mail, handler: () => navigateTo('/contact') },
     { id: 'act-copy-email', title: copied ? 'Copied to Clipboard!' : 'Copy Email Address', subtitle: siteConfig.email, category: 'Actions', icon: copied ? Check : Copy, handler: copyEmail, shortcut: '↵' },
     { id: 'act-view-github', title: 'Visit GitHub Profile', subtitle: siteConfig.socials.github, category: 'Socials', icon: ExternalLink, handler: () => { window.open(siteConfig.socials.github, '_blank'); setIsOpen(false); } },
     { id: 'act-view-linkedin', title: 'Connect on LinkedIn', subtitle: siteConfig.socials.linkedin, category: 'Socials', icon: ExternalLink, handler: () => { window.open(siteConfig.socials.linkedin, '_blank'); setIsOpen(false); } },
+    { id: 'act-view-facebook', title: 'Connect on Facebook', subtitle: siteConfig.socials.facebook, category: 'Socials', icon: ExternalLink, handler: () => { window.open(siteConfig.socials.facebook, '_blank'); setIsOpen(false); } },
   ];
 
   const filteredActions = actions.filter((item) => {

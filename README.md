@@ -13,9 +13,9 @@ A production-grade, highly advanced developer portfolio built with **Astro**, **
 - **Interactive 3D Skill Sphere**: Fibonacci-distributed 3D spherical tag cloud in `/skills` running on high-efficiency canvas.
 - **Relational ER Diagram & API Flow Simulator**: Visualizes multi-tenant table relationships (`PK`, `FK`, and compound indexing) and simulates an HTTP packet roundtrip with latency telemetry.
 - **GitHub Activity Telemetry**: 52-week contribution heatmap, language percentage breakdown, pinned repositories, and recent commit history.
-- **Content Collections with Strict Zod Schemas**: Type-safe Markdown content for projects, blog posts, and career milestones.
+- **Content Collections with Strict Zod Schemas**: Type-safe Markdown content for projects and career milestones.
 - **Command Palette (`Ctrl/Cmd + K`)**: Global modal to instantly jump to any route, copy contact details, or trigger shortcuts.
-- **Accessible & Performance-First**: WCAG contrast, semantic HTML, Google Lighthouse 95+ target, Open Graph, Twitter Cards, RSS feed (`/rss.xml`), and JSON-LD structured schema.
+- **Accessible & Performance-First**: WCAG contrast, semantic HTML, Google Lighthouse 95+ target, Open Graph, Twitter Cards, and JSON-LD structured schema.
 
 ---
 
@@ -48,14 +48,13 @@ rnznportfolio/
 │   ├── config/
 │   │   └── site.ts             # 👈 SINGLE SOURCE OF TRUTH (name, bio, email, socials)
 │   ├── content/                # Content collections (Markdown files)
-│   │   ├── blog/               # Technical blog articles
-│   │   ├── experience/         # Career milestones & certifications
+│   │   ├── experience/         # Career milestones & credentials
 │   │   └── projects/           # Flagship system case studies
 │   ├── components/
 │   │   ├── ApiFlowDiagram.tsx  # Interactive request/response flow simulator
 │   │   ├── BackToTop.astro     # Smooth back-to-top button
 │   │   ├── CommandPalette.tsx  # Ctrl/Cmd+K quick navigation palette
-│   │   ├── ContactForm.tsx     # Animated contact form with confetti & validation
+│   │   ├── ContactForm.tsx     # Animated contact form with validation
 │   │   ├── DatabaseDiagram.tsx # Interactive database ER model
 │   │   ├── DeveloperTerminal.tsx # CLI shell on About page
 │   │   ├── Footer.astro        # Global footer with live clock & links
@@ -70,23 +69,15 @@ rnznportfolio/
 │   │   ├── TechMarquee.astro   # Infinite ticker marquee
 │   │   ├── TestimonialsSection.astro # Testimonials from leaders & colleagues
 │   │   └── TypewriterHero.tsx  # Dynamic typing effect subtitle
-│   │   ├── SkillSphere.tsx     # 3D orbiting skill sphere
-│   │   ├── StatsCounter.astro  # Numerical stats counters
-│   │   ├── TechMarquee.astro   # Infinite scrolling tech marquee
-│   │   ├── TestimonialsSection.astro # Client & lead feedback
-│   │   └── TypewriterHero.tsx  # Rotating hero typing animation
 │   ├── data/
 │   │   ├── github.ts           # GitHub profile, languages, pinned repos & commits
 │   │   ├── services.ts         # Service offerings & engineering process steps
 │   │   ├── skills.ts           # Categorized proficiencies & years of experience
-│   │   └── testimonials.ts     # Realistic client quotes
+│   │   └── testimonials.ts     # Authentic client & leader quotes
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Global HTML wrapper (Lenis smooth scroll, meta, fonts)
 │   ├── pages/
-│   │   ├── about.astro         # Bio, photo placeholder, CLI terminal & values
-│   │   ├── blog/
-│   │   │   ├── index.astro     # Blog archive with reading time & tags
-│   │   │   └── [slug].astro    # Single blog post with syntax highlighting
+│   │   ├── about.astro         # Bio, profile specs, CLI terminal & values
 │   │   ├── contact.astro       # Contact form, direct coordinates & FAQs
 │   │   ├── experience.astro    # Vertical animated career timeline
 │   │   ├── github.astro        # Heatmap, languages chart & repository pins
@@ -95,12 +86,11 @@ rnznportfolio/
 │   │   │   ├── index.astro     # Filterable project portfolio grid
 │   │   │   └── [slug].astro    # Dynamic case study detail route
 │   │   ├── resume.astro        # Printable CV view + PDF download button
-│   │   ├── rss.xml.ts          # RSS feed generator
 │   │   ├── services.astro      # Services cards & engagement models
 │   │   ├── skills.astro        # Skill categories & 3D orbiting sphere
-│   │   └── 404.astro           # Cyber terminal error glitch page
+│   │   └── 404.astro           # Terminal diagnostics error page
 │   ├── styles/
-│   │   └── global.css          # Tailwind CSS v4, neon accents, scrollbars
+│   │   └── global.css          # Tailwind CSS v4 & custom animations
 │   └── content.config.ts       # Astro Content Collections Zod definitions
 ├── .env.example                # Environment variables template
 ├── astro.config.mjs            # Astro configuration with React, Sitemap, and Tailwind
@@ -185,23 +175,6 @@ architecture: "High-level summary of network and database topology."
 
 ## Technical Deep Dive
 Write your Markdown case study here. Code blocks are automatically syntax highlighted with Shiki!
-```
-
-### Adding a Blog Post
-Create a Markdown file in `src/content/blog/my-post-title.md`:
-
-```markdown
----
-title: "Tuning MySQL InnoDB Buffer Pools for High Throughput"
-description: "How to eliminate disk thrashing and achieve 99% buffer cache hit ratios."
-pubDate: 2026-11-10
-tags: ["MySQL", "Databases", "Performance"]
-readingTime: "5 min read"
-featured: true
-author: "Lorenzon Emmanuel S. Ahorro"
----
-
-Write your article here. Code blocks support syntax highlighting across all languages (SQL, PHP, TS, Bash, etc.).
 ```
 
 ---

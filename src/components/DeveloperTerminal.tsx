@@ -188,6 +188,7 @@ export default function DeveloperTerminal() {
               <p>Location: <span className="text-neutral-200">{siteConfig.location}, Philippines</span></p>
               <p>GitHub: <a href={siteConfig.socials.github} target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:underline">{siteConfig.socials.github}</a></p>
               <p>LinkedIn: <a href={siteConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:underline">{siteConfig.socials.linkedin}</a></p>
+              <p>Facebook: <a href={siteConfig.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:underline">{siteConfig.socials.facebook}</a></p>
             </div>
           )
         };

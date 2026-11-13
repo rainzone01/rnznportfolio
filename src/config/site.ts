@@ -53,9 +53,9 @@ export const siteConfig: SiteConfig = {
   siteUrl: "https://rnznportfolio.dev",
   socials: {
     github: "https://github.com/rainzone01",
-    linkedin: "https://linkedin.com/in/lorenzon-ahorro",
+    linkedin: "https://www.linkedin.com/in/rainzone01",
     twitter: "https://x.com/ahorrorenzon",
-    facebook: "https://facebook.com/lorenzon.ahorro",
+    facebook: "https://www.facebook.com/rulinzun",
     instagram: "https://instagram.com/ahorrorenzon",
   },
   stats: {
@@ -73,7 +73,6 @@ export const siteConfig: SiteConfig = {
     { label: "Experience", href: "/experience" },
     { label: "Services", href: "/services" },
     { label: "GitHub", href: "/github" },
-    { label: "Blog", href: "/blog" },
     { label: "Resume", href: "/resume" },
     { label: "Contact", href: "/contact" },
   ],

@@ -70,14 +70,17 @@ import { siteConfig } from '../config/site';
               <span class="text-xs text-neutral-400">↗</span>
             </a>
           </li>
+          {siteConfig.socials.facebook && (
+            <li>
+              <a href={siteConfig.socials.facebook} target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 transition-colors flex items-center gap-1">
+                <span>Facebook</span>
+                <span class="text-xs text-neutral-400">↗</span>
+              </a>
+            </li>
+          )}
           <li>
             <a href="/resume" class="hover:text-neutral-950 transition-colors">
               Online Resume / CV
-            </a>
-          </li>
-          <li>
-            <a href="/blog" class="hover:text-neutral-950 transition-colors">
-              Blog &amp; Articles
             </a>
           </li>
           <li>
@@ -96,8 +99,6 @@ import { siteConfig } from '../config/site';
         © {new Date().getFullYear()} {siteConfig.name}. Clean &amp; Modern Portfolio built with Astro &amp; React.
       </p>
       <div class="flex items-center gap-4">
-        <a href="/rss.xml" class="hover:text-neutral-900 transition-colors">RSS Feed</a>
-        <span>•</span>
         <a href="/sitemap-index.xml" class="hover:text-neutral-900 transition-colors">Sitemap</a>
         <span>•</span>
         <span class="text-emerald-700 font-medium">● ACTIVE</span>

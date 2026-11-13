@@ -61,16 +61,8 @@ const isActive = (href: string) => {
         <!-- Command Palette React Island -->
         <CommandPalette client:idle />
 
-        <!-- More pages dropdown / secondary links (Blog, Resume, Contact) -->
+        <!-- Secondary links (Resume, Contact) -->
         <div class="hidden md:flex items-center gap-2">
-          <a
-            href="/blog"
-            class={`px-2.5 py-1.5 text-xs font-mono rounded-lg transition-colors ${
-              isActive('/blog') ? 'text-neutral-900 bg-neutral-100 font-semibold' : 'text-neutral-600 hover:text-neutral-900'
-            }`}
-          >
-            Blog
-          </a>
           <a
             href="/resume"
             class={`px-2.5 py-1.5 text-xs font-mono rounded-lg transition-colors ${

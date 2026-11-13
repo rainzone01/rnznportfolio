@@ -21,20 +21,6 @@ const projects = defineCollection({
   }),
 });
 
-const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    tags: z.array(z.string()),
-    readingTime: z.string(),
-    featured: z.boolean().default(false),
-    author: z.string().default('Lorenzon Emmanuel S. Ahorro'),
-  }),
-});
-
 const experience = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/experience' }),
   schema: z.object({
@@ -50,4 +36,4 @@ const experience = defineCollection({
   }),
 });
 
-export const collections = { projects, blog, experience };
+export const collections = { projects, experience };

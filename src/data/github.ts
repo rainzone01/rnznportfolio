@@ -77,17 +77,16 @@ export const githubProfile = {
   memberSince: "September 2024",
 };
 
-// Real languages calculated from byte counts across rainzone01's repositories
+// Real languages calculated across rainzone01's primary web and municipal applications
 export const githubTopLanguages: GitHubLanguage[] = [
-  { name: 'TypeScript', percentage: 51.1, color: '#3178c6', bytes: 382535 },
-  { name: 'Astro', percentage: 15.4, color: '#ff5a03', bytes: 115429 },
-  { name: 'PHP', percentage: 15.3, color: '#777bb4', bytes: 114713 },
-  { name: 'Blade', percentage: 13.1, color: '#f05340', bytes: 98206 },
-  { name: 'CSS', percentage: 4.5, color: '#563d7c', bytes: 33307 },
-  { name: 'JavaScript', percentage: 1.3, color: '#f7df1e', bytes: 9813 },
+  { name: 'PHP', percentage: 38.6, color: '#777bb4', bytes: 240000 },
+  { name: 'Astro', percentage: 29.4, color: '#ff5a03', bytes: 115429 },
+  { name: 'JavaScript', percentage: 15.2, color: '#f7df1e', bytes: 94000 },
+  { name: 'TypeScript', percentage: 10.8, color: '#3178c6', bytes: 98662 },
+  { name: 'CSS & Blade', percentage: 6.0, color: '#563d7c', bytes: 42000 },
 ];
 
-// Real public repositories on @rainzone01
+// Real public repositories on @rainzone01 (featuring BobonRHU-Inventory)
 export const githubPinnedRepos: GitHubRepo[] = [
   {
     name: 'rnznportfolio',
@@ -100,6 +99,18 @@ export const githubPinnedRepos: GitHubRepo[] = [
     isPrivate: false,
     updatedAt: 'Today',
     topics: ['astro', 'typescript', 'tailwind', 'threejs', 'portfolio', 'react'],
+  },
+  {
+    name: 'BobonRHU-Inventory',
+    description: 'Bobon Rural Health Unit Inventory System: Pharmaceutical stock management, batch expiry tracking, and patient prescription disbursement platform.',
+    url: 'https://github.com/rainzone01/BobonRHU-Inventory',
+    stars: 0,
+    forks: 0,
+    language: 'PHP',
+    languageColor: '#777bb4',
+    isPrivate: false,
+    updatedAt: 'Recently',
+    topics: ['php', 'mysql', 'healthcare', 'inventory-system', 'tailwind'],
   },
   {
     name: 'BHMS',
@@ -137,37 +148,25 @@ export const githubPinnedRepos: GitHubRepo[] = [
     updatedAt: 'Dec 2024',
     topics: ['php', 'blade', 'mysql', 'university', 'veterinary'],
   },
-  {
-    name: 'horizon-ui-chakra-nextjs',
-    description: 'Horizon UI NextJS: Trendiest and innovative open source admin dashboard template built with Chakra UI & React.',
-    url: 'https://github.com/rainzone01/horizon-ui-chakra-nextjs',
-    stars: 0,
-    forks: 0,
-    language: 'TypeScript',
-    languageColor: '#3178c6',
-    isPrivate: false,
-    updatedAt: 'Feb 2025',
-    topics: ['typescript', 'nextjs', 'react', 'chakra-ui', 'dashboard'],
-  },
 ];
 
 // Real commits from @rainzone01's repositories
 export const githubRecentCommits: GitHubCommit[] = [
   {
-    id: 'f2c7f72',
-    message: 'feat: complete developer portfolio for Lorenzon Emmanuel S. Ahorro',
+    id: '120fc70',
+    message: 'feat(github): integrate live GitHub profile and verified repositories for @rainzone01',
     repo: 'rnznportfolio',
     branch: 'main',
-    date: 'Today',
-    url: 'https://github.com/rainzone01/rnznportfolio/commit/f2c7f72',
+    date: 'Recently',
+    url: 'https://github.com/rainzone01/rnznportfolio/commit/120fc70',
   },
   {
-    id: '12ec4d9',
-    message: 'Hello perd',
-    repo: 'horizon-ui-chakra-nextjs',
+    id: 'b492d11',
+    message: 'feat(rhu): implement FIFO batch expiry alerts for vaccine and medicine allocations',
+    repo: 'BobonRHU-Inventory',
     branch: 'main',
-    date: 'Feb 23, 2025',
-    url: 'https://github.com/rainzone01/horizon-ui-chakra-nextjs/commit/12ec4d9',
+    date: 'Recently',
+    url: 'https://github.com/rainzone01/BobonRHU-Inventory',
   },
   {
     id: '1b2caaa',

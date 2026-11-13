@@ -7,7 +7,7 @@ tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS"]
 featured: true
 order: 2
 liveUrl: "#"
-githubUrl: "https://github.com/rainzone01/bobon-rhu-inventory-system"
+githubUrl: "https://github.com/rainzone01/BobonRHU-Inventory"
 stats:
   "Medicines Tracked": "250+ SKUs"
   "Disbursement Time": "-60%"
