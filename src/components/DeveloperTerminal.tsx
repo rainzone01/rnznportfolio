@@ -170,6 +170,7 @@ export default function DeveloperTerminal() {
               <p>• <a href="/projects/gsm-vcci-queuing-system" className="text-white hover:underline font-semibold">GSM-VCCI Queuing System</a> - Ticketing &amp; waiting room display system</p>
               <p>• <a href="/projects/boarding-house-management-system" className="text-white hover:underline font-semibold">Boarding House Management System</a> - Tenant occupancy &amp; utility billing</p>
               <p>• <a href="/projects/uep-facility-booking-system" className="text-white hover:underline font-semibold">UEP Facility Booking System</a> - University campus venue reservation</p>
+              <p>• <a href="/projects/ars-magna-museum-of-fine-arts" className="text-white hover:underline font-semibold">Ars Magna — Museum of Fine Arts</a> - Digital museum &amp; real-time 3D sculpture studio</p>
               <p className="text-xs text-neutral-400 mt-1">Visit <a href="/projects" className="text-white hover:underline font-bold">/projects</a> to see all case studies.</p>
             </div>
           )

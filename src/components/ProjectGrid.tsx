@@ -25,7 +25,8 @@ const filterOptions = [
   'JavaScript',
   'Tailwind CSS',
   'Node.js',
-  'Express.js'
+  'Express.js',
+  'Three.js / WebGL'
 ];
 
 export default function ProjectGrid({ projects }: ProjectGridProps) {
@@ -33,11 +34,14 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
 
   const filteredProjects = projects.filter((project) => {
     if (selectedFilter === 'All') return true;
-    return project.tags.some(
-      (tag) =>
-        tag.toLowerCase() === selectedFilter.toLowerCase() ||
-        tag.toLowerCase().includes(selectedFilter.toLowerCase())
-    );
+    const filterLower = selectedFilter.toLowerCase();
+    return project.tags.some((tag) => {
+      const tagLower = tag.toLowerCase();
+      if (filterLower.includes('webgl') || filterLower.includes('three')) {
+        return tagLower.includes('webgl') || tagLower.includes('three');
+      }
+      return tagLower === filterLower || tagLower.includes(filterLower) || filterLower.includes(tagLower);
+    });
   });
 
   return (
