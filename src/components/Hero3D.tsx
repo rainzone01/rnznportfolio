@@ -10,7 +10,7 @@ export function HeroFallback() {
       <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-neutral-200/50 blur-3xl"></div>
       <div className="relative z-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full border border-neutral-300 flex items-center justify-center p-4 bg-white/90 backdrop-blur-xl shadow-xl">
         <div className="text-center font-mono space-y-2">
-          <div className="text-3xl sm:text-4xl font-black text-neutral-900">&lt;/&gt;</div>
+          <div className="text-3xl sm:text-4xl font-black tracking-tight text-neutral-900 font-mono">LA</div>
           <div className="text-xs text-neutral-700 font-semibold tracking-wider uppercase">Full-Stack Core</div>
           <div className="text-[11px] text-neutral-500 font-medium">PHP • JS • Node • SQL</div>
         </div>

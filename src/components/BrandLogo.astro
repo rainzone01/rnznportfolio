@@ -1,0 +1,72 @@
+---
+interface Props {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+  showHalo?: boolean;
+}
+
+const { size = 'sm', class: className = '', showHalo = false } = Astro.props;
+
+const sizeMap = {
+  xs: 'w-6 h-6',
+  sm: 'w-8 h-8',
+  md: 'w-10 h-10',
+  lg: 'w-12 h-12',
+  xl: 'w-16 h-16',
+};
+
+const dimensionClass = sizeMap[size] || 'w-8 h-8';
+---
+
+<div class={`relative inline-flex items-center justify-center shrink-0 ${dimensionClass} ${className} group`}>
+  {showHalo && (
+    <div class="absolute inset-0 rounded-2xl bg-neutral-900/10 blur-sm scale-110 -z-10 pointer-events-none" />
+  )}
+  <svg 
+    viewBox="0 0 64 64" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-full transition-transform duration-200 group-hover:scale-105 select-none"
+    aria-label="LA Logo"
+    role="img"
+  >
+    <!-- Dark squircle container -->
+    <rect width="64" height="64" rx="16" fill="#121316" />
+    <rect 
+      x="1" 
+      y="1" 
+      width="62" 
+      height="62" 
+      rx="15" 
+      stroke="#272a33" 
+      stroke-width="1.5" 
+      class="group-hover:stroke-neutral-500 transition-colors"
+    />
+    
+    <!-- Monogram: 'L' Glyph -->
+    <path 
+      d="M15 18V46H27" 
+      stroke="#F8F9FA" 
+      stroke-width="4.5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+    />
+    
+    <!-- Monogram: 'A' Glyph -->
+    <path 
+      d="M26 46L38 18L50 46" 
+      stroke="#F8F9FA" 
+      stroke-width="4.5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+    />
+    
+    <!-- 'A' Crossbar -->
+    <path 
+      d="M31.5 36H44.5" 
+      stroke="#F8F9FA" 
+      stroke-width="3.5" 
+      stroke-linecap="round" 
+    />
+  </svg>
+</div>

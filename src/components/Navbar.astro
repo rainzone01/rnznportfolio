@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '../config/site';
 import CommandPalette from './CommandPalette';
+import BrandLogo from './BrandLogo.astro';
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => {
@@ -23,9 +24,7 @@ const isActive = (href: string) => {
         class="flex items-center gap-2.5 group text-decoration-none focus:outline-none"
         aria-label="Home"
       >
-        <div class="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center font-mono font-bold text-xs group-hover:bg-neutral-800 transition-colors">
-          <span>&lt;/&gt;</span>
-        </div>
+        <BrandLogo size="sm" />
         <div class="flex flex-col">
           <span class="text-sm font-bold tracking-tight text-neutral-900 group-hover:text-neutral-700 transition-colors">
             {siteConfig.name}

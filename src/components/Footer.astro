@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../config/site';
+import BrandLogo from './BrandLogo.astro';
 ---
 
 <footer class="relative z-10 border-t border-neutral-200/80 bg-neutral-100/70 text-neutral-600 font-sans mt-24">
@@ -11,9 +12,7 @@ import { siteConfig } from '../config/site';
       <!-- Brand & Status -->
       <div class="md:col-span-2 space-y-4">
         <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-neutral-900 text-white flex items-center justify-center font-mono font-bold text-xs">
-            &lt;/&gt;
-          </div>
+          <BrandLogo size="sm" />
           <span class="text-base font-bold text-neutral-900">{siteConfig.name}</span>
         </div>
         <p class="text-sm text-neutral-600 max-w-md leading-relaxed">

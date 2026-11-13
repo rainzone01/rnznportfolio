@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DeveloperTerminal from '../components/DeveloperTerminal';
+import BrandLogo from '../components/BrandLogo.astro';
 import { siteConfig } from '../config/site';
 
 const values = [
@@ -62,8 +63,8 @@ const values = [
           <div class="w-full aspect-square rounded-xl bg-neutral-100 flex flex-col items-center justify-center relative overflow-hidden border border-neutral-200 p-6">
             
             <!-- Center Avatar Symbol -->
-            <div class="relative z-10 w-24 h-24 rounded-2xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-900 text-3xl font-mono font-bold shadow-xs">
-              &lt;LA/&gt;
+            <div class="relative z-10 flex items-center justify-center">
+              <BrandLogo size="xl" showHalo={true} />
             </div>
 
             <span class="relative z-10 text-base font-bold text-neutral-900 mt-4 text-center">
