@@ -39,7 +39,7 @@ const isActive = (href: string) => {
 
       <!-- Desktop Nav Links -->
       <nav class="hidden lg:flex items-center gap-1 bg-neutral-100/90 p-1 rounded-full border border-neutral-200/80">
-        {siteConfig.navLinks.slice(0, 7).map((item) => {
+        {siteConfig.navLinks.map((item) => {
           const active = isActive(item.href);
           return (
             <a
@@ -61,16 +61,8 @@ const isActive = (href: string) => {
         <!-- Command Palette React Island -->
         <CommandPalette client:idle />
 
-        <!-- Secondary links (Resume, Contact) -->
+        <!-- Secondary CTA: Contact -->
         <div class="hidden md:flex items-center gap-2">
-          <a
-            href="/resume"
-            class={`px-2.5 py-1.5 text-xs font-mono rounded-lg transition-colors ${
-              isActive('/resume') ? 'text-neutral-900 bg-neutral-100 font-semibold' : 'text-neutral-600 hover:text-neutral-900'
-            }`}
-          >
-            CV
-          </a>
           <a
             href="/contact"
             class="px-4 py-2 text-xs font-mono font-medium rounded-lg bg-neutral-900 text-white hover:bg-neutral-800 transition-colors shadow-xs"
