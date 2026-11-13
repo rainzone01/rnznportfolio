@@ -3,11 +3,10 @@ title: "Boarding House Management System"
 description: "Room occupancy tracking, tenant leases, and utility billing platform for rental properties."
 longDescription: "A streamlined property and boarding house administration platform designed to manage student and working-professional accommodations. Handles room assignments, rent collection ledgers, utility bill splits, and digital receipts."
 category: "Property Management"
-tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS"]
+tags: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"]
 featured: false
 order: 4
-liveUrl: "#"
-githubUrl: "https://github.com/rainzone01/boarding-house-management-system"
+githubUrl: "https://github.com/rainzone01/BHMS"
 stats:
   "Tenants Managed": "120+"
   "Rent Collection": "98%"

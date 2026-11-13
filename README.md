@@ -12,7 +12,6 @@ A production-grade, highly advanced developer portfolio built with **Astro**, **
 - **Interactive Developer Terminal (CLI)**: Interactive shell in `/about` where users can execute `help`, `whoami`, `skills`, `projects`, `contact`, and `cat bio.txt` with arrow-key history and autocomplete.
 - **Interactive 3D Skill Sphere**: Fibonacci-distributed 3D spherical tag cloud in `/skills` running on high-efficiency canvas.
 - **Relational ER Diagram & API Flow Simulator**: Visualizes multi-tenant table relationships (`PK`, `FK`, and compound indexing) and simulates an HTTP packet roundtrip with latency telemetry.
-- **GitHub Activity Telemetry**: 52-week contribution heatmap, language percentage breakdown, pinned repositories, and recent commit history.
 - **Content Collections with Strict Zod Schemas**: Type-safe Markdown content for projects and career milestones.
 - **Command Palette (`Ctrl/Cmd + K`)**: Global modal to instantly jump to any route, copy contact details, or trigger shortcuts.
 - **Accessible & Performance-First**: WCAG contrast, semantic HTML, Google Lighthouse 95+ target, Open Graph, Twitter Cards, and JSON-LD structured schema.
@@ -58,7 +57,6 @@ rnznportfolio/
 │   │   ├── DatabaseDiagram.tsx # Interactive database ER model
 │   │   ├── DeveloperTerminal.tsx # CLI shell on About page
 │   │   ├── Footer.astro        # Global footer with live clock & links
-│   │   ├── GitHubHeatmap.tsx   # 52-week commit activity heatmap
 │   │   ├── Hero3D.tsx          # Three.js / React Three Fiber hero canvas
 │   │   ├── Navbar.astro        # Sticky navigation bar with drawer
 │   │   ├── ProjectGrid.tsx     # Filterable project cards
@@ -70,7 +68,6 @@ rnznportfolio/
 │   │   ├── TestimonialsSection.astro # Testimonials from leaders & colleagues
 │   │   └── TypewriterHero.tsx  # Dynamic typing effect subtitle
 │   ├── data/
-│   │   ├── github.ts           # GitHub profile, languages, pinned repos & commits
 │   │   ├── services.ts         # Service offerings & engineering process steps
 │   │   ├── skills.ts           # Categorized proficiencies & years of experience
 │   │   └── testimonials.ts     # Authentic client & leader quotes
@@ -80,7 +77,6 @@ rnznportfolio/
 │   │   ├── about.astro         # Bio, profile specs, CLI terminal & values
 │   │   ├── contact.astro       # Contact form, direct coordinates & FAQs
 │   │   ├── experience.astro    # Vertical animated career timeline
-│   │   ├── github.astro        # Heatmap, languages chart & repository pins
 │   │   ├── index.astro         # Home page with 3D hero & feature showcases
 │   │   ├── projects/
 │   │   │   ├── index.astro     # Filterable project portfolio grid
@@ -135,14 +131,6 @@ Set `PUBLIC_CONTACT_ENDPOINT` to your Formspree endpoint, Resend webhook, or cus
 ```env
 PUBLIC_CONTACT_ENDPOINT=https://formspree.io/f/your-form-id
 ```
-
-### 3. Connect Live GitHub Data
-In `src/pages/github.astro`, the page currently renders sample data structured in `src/data/github.ts`. To stream live metrics directly from your GitHub profile, provide your `GITHUB_TOKEN` and username in `.env`:
-```env
-GITHUB_TOKEN=ghp_your_personal_access_token_here
-PUBLIC_GITHUB_USERNAME=your-username
-```
-You can update `src/data/github.ts` to call GitHub's GraphQL API during static builds if desired.
 
 ---
 

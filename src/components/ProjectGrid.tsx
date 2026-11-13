@@ -21,13 +21,11 @@ interface ProjectGridProps {
 const filterOptions = [
   'All',
   'PHP',
-  'Next.js',
-  'React',
-  'Node',
-  'Express',
-  'PostgreSQL',
   'MySQL',
-  'Tailwind'
+  'JavaScript',
+  'Tailwind CSS',
+  'Node.js',
+  'Express.js'
 ];
 
 export default function ProjectGrid({ projects }: ProjectGridProps) {
@@ -35,7 +33,11 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
 
   const filteredProjects = projects.filter((project) => {
     if (selectedFilter === 'All') return true;
-    return project.tags.some((tag) => tag.toLowerCase() === selectedFilter.toLowerCase());
+    return project.tags.some(
+      (tag) =>
+        tag.toLowerCase() === selectedFilter.toLowerCase() ||
+        tag.toLowerCase().includes(selectedFilter.toLowerCase())
+    );
   });
 
   return (
@@ -129,19 +131,27 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
                 </a>
 
                 <div className="flex items-center gap-2">
-                  {project.githubUrl && (
+                  {project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium text-neutral-700 bg-neutral-100 hover:bg-neutral-200 hover:text-neutral-900 border border-neutral-300 transition-colors"
                       title="View GitHub Repository"
                       aria-label="GitHub Repository"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="w-3.5 h-3.5" />
+                      <span>Code ↗</span>
                     </a>
+                  ) : (
+                    <span
+                      className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono text-neutral-500 bg-neutral-100 border border-neutral-200"
+                      title="Internal / Private Organization Repository"
+                    >
+                      Private Repo
+                    </span>
                   )}
-                  {project.liveUrl && (
+                  {project.liveUrl && project.liveUrl !== '#' && (
                     <a
                       href={project.liveUrl}
                       target="_blank"

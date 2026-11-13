@@ -55,7 +55,6 @@ export default function CommandPalette() {
     { id: 'nav-skills', title: 'Skills & Tech Stack', subtitle: 'Interactive 3D skill sphere & proficiencies', category: 'Navigation', icon: Cpu, handler: () => navigateTo('/skills') },
     { id: 'nav-exp', title: 'Experience & Timeline', subtitle: 'Work history, education & credentials', category: 'Navigation', icon: Briefcase, handler: () => navigateTo('/experience') },
     { id: 'nav-services', title: 'Services & Offerings', subtitle: 'Full-stack engineering & system modernization', category: 'Navigation', icon: Wrench, handler: () => navigateTo('/services') },
-    { id: 'nav-github', title: 'GitHub Activity', subtitle: 'Commit heatmap, pinned repos & code stats', category: 'Navigation', icon: Github, handler: () => navigateTo('/github') },
     { id: 'nav-resume', title: 'Resume / CV', subtitle: 'Digital curriculum vitae & PDF download', category: 'Navigation', icon: FileText, handler: () => navigateTo('/resume') },
     { id: 'nav-contact', title: 'Contact Me', subtitle: 'Start a project or send an inquiry', category: 'Navigation', icon: Mail, handler: () => navigateTo('/contact') },
     { id: 'act-copy-email', title: copied ? 'Copied to Clipboard!' : 'Copy Email Address', subtitle: siteConfig.email, category: 'Actions', icon: copied ? Check : Copy, handler: copyEmail, shortcut: '↵' },

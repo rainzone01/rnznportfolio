@@ -3,11 +3,9 @@ title: "Bobon Katarungang Pambarangay System"
 description: "Barangay justice, dispute mediation, and incident docketing platform for the Municipality of Bobon."
 longDescription: "A digital governance and dispute resolution system engineered for local barangay officials in Bobon, Northern Samar. Replaces manual blotter paper logbooks with automated hearing scheduling, mediation agreement tracking, and statutory compliance monitoring."
 category: "Government & Legal Tech"
-tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS", "HTML5"]
+tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS", "HTML"]
 featured: true
 order: 1
-liveUrl: "#"
-githubUrl: "https://github.com/rainzone01/bobon-katarungang-pambarangay-system"
 stats:
   "Cases Docketed": "500+"
   "Resolution Rate": "92%"

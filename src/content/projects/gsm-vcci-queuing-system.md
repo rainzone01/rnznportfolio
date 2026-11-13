@@ -3,11 +3,10 @@ title: "GSM-VCCI Queuing System"
 description: "High-throughput ticketing, counter routing, and real-time public queuing display for GSM-VCCI."
 longDescription: "A customer flow management and queuing system engineered for GSM-VCCI service centers. Organizes customer service lines via ticket dispensing, multi-counter priority routing, audio chime calling, and real-time waiting room displays."
 category: "Operations & Queuing"
-tags: ["JavaScript", "Node.js", "Express", "PHP", "MySQL"]
+tags: ["JavaScript", "Node.js", "Express.js", "MySQL", "HTML", "CSS"]
 featured: true
 order: 3
-liveUrl: "#"
-githubUrl: "https://github.com/rainzone01/gsm-vcci-queuing-system"
+githubUrl: "https://github.com/rainzone01/GSM-VCCI-Distribution-System"
 stats:
   "Daily Tickets": "1,200+"
   "Avg Wait Reduction": "35%"

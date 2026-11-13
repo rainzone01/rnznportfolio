@@ -3,11 +3,9 @@ title: "UEP Facility Booking System"
 description: "Campus venue reservations, schedule conflict prevention, and approval workflow for UEP."
 longDescription: "An institutional campus facility reservation and scheduling platform built for the University of Eastern Philippines (UEP). Manages booking requests for university auditoriums, gymnasium, function halls, and multimedia laboratories with automated collision checks."
 category: "Academic & Campus Tech"
-tags: ["React", "Next.js", "PHP", "MySQL", "Tailwind CSS"]
+tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS", "HTML"]
 featured: false
 order: 5
-liveUrl: "#"
-githubUrl: "https://github.com/rainzone01/uep-facility-booking-system"
 stats:
   "Facilities Managed": "40+"
   "Booking Collisions": "0"

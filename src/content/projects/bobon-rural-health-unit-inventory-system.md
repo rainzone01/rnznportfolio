@@ -3,11 +3,9 @@ title: "Bobon Rural Health Unit Inventory System"
 description: "Medicine stock, pharmaceutical supplies, and patient prescription disbursement ledger for Bobon RHU."
 longDescription: "A specialized public healthcare inventory and dispensing platform created for the Rural Health Unit of Bobon, Northern Samar. Tracks essential medicines, medical supply batches, expiry dates, and clinic disbursements with automated low-stock warnings."
 category: "Healthcare & Public Health"
-tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS"]
+tags: ["PHP", "MySQL", "JavaScript", "Tailwind CSS", "HTML"]
 featured: true
 order: 2
-liveUrl: "#"
-githubUrl: "https://github.com/rainzone01/BobonRHU-Inventory"
 stats:
   "Medicines Tracked": "250+ SKUs"
   "Disbursement Time": "-60%"
